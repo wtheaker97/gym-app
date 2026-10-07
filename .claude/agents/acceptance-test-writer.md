@@ -14,7 +14,7 @@ You write acceptance tests for the gym-app backend. You are the "red" half of an
 
 ## How to write the test
 
-- Acceptance tests drive the system through its public boundary (application use cases now; the HTTP API once it exists) via the DSL in `backend/tests/acceptance/dsl/`. Tests never touch repositories, entities, or internals directly.
+- Acceptance tests drive the system through its API endpoints (FastAPI test client) via the DSL in `backend/tests/acceptance/dsl/`. The DSL hides HTTP mechanics behind business-language steps; tests never touch repositories, entities, or internals directly.
 - Extend the DSL minimally: add only the steps this story needs. DSL steps take business-level arguments with sensible defaults, so tests state only what they're about.
 - Every scenario acts as a specific owner/user (multi-tenancy is modelled from day one, per CLAUDE.md).
 - One test per scenario; name it as a behaviour statement (`test_a_completed_workout_appears_in_history`).

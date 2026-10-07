@@ -11,6 +11,7 @@ Personal gym app (started 2026-10-07) — both an architecture experiment and a 
 
 - The user architects and makes the calls; Claude implements; the user reviews like a tech lead. On the frontend Claude takes more of a lead, but it must be well-architected.
 - Backend is built with **acceptance-test-driven development**: for each feature, first write an acceptance test plus any relevant DSL (speaking the ubiquitous language, e.g. `start_workout()` / `log_set(...)`), then implement via regular TDD.
+- **Acceptance tests are per-side, not cross-stack**: backend acceptance tests drive the API endpoints; frontend acceptance tests drive the UI against the in-memory adapters (stubbed API). The API contract is the seam — there is no end-to-end test harness spanning both.
 - Yes to tests, migrations, linting. Commit message quality is not a priority.
 
 ## Backend architecture
