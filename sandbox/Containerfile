@@ -1,0 +1,14 @@
+FROM docker.io/library/node:22-bookworm
+
+RUN npm install -g @anthropic-ai/claude-code
+
+USER node
+WORKDIR /home/node
+
+# uv manages its own Python toolchains (project pins 3.14)
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+ENV PATH="/home/node/.local/bin:${PATH}"
+
+COPY --chmod=755 entrypoint.sh /usr/local/bin/sandbox-entrypoint
+ENTRYPOINT ["sandbox-entrypoint"]
+CMD ["bash"]

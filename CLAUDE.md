@@ -48,7 +48,7 @@ Deliberate improvements over the POS app (its known warts):
 ## Deferred decisions (revisit when first needed)
 
 - Offline-first vs online-only client — design API/client state layer so offline can be retrofitted (gyms have bad signal).
-- Container runtime (Docker vs Podman) — defer until first containerization; keep the image definition vanilla/OCI-compatible so either works.
+- ~~Container runtime~~ — decided: rootless Podman (see `sandbox/`). Keep image definitions vanilla/OCI-compatible regardless.
 - Hosting target (leaning Cloudflare Pages + Railway/Fly + Neon Postgres or SQLite) — defer until walking skeleton exists.
 - ORM/real database — defer until in-memory repositories are no longer sufficient.
 - Frontend server-state approach: POS-style providers + handlers (leaning) vs TanStack Query — settle during frontend design.
