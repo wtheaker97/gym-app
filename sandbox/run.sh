@@ -4,7 +4,14 @@
 #        ./run.sh claude       -> Claude Code (add --dangerously-skip-permissions to let it run unattended)
 set -euo pipefail
 
-: "${GITHUB_TOKEN:?Export GITHUB_TOKEN (fine-grained PAT, single-repo scope) first}"
+ENV_FILE="$(dirname "$0")/../.env"
+if [ -f "$ENV_FILE" ]; then
+  set -a
+  source "$ENV_FILE"
+  set +a
+fi
+
+: "${GITHUB_TOKEN:?Set GITHUB_TOKEN in .env (fine-grained PAT, single-repo scope)}"
 
 exec podman run --rm -it \
   --security-opt=no-new-privileges \
